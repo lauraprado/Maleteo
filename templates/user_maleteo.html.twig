@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href=" {{asset('css/_boxes.scss')}} ">
+    <link rel="stylesheet" href=" {{asset('css/_buttons.scss')}} ">
+    <link rel="stylesheet" href=" {{asset('css/_grid.scss')}} ">
+    <link rel="stylesheet" href=" {{asset('css/_typography.scss')}} ">
+    <link rel="stylesheet" href=" {{asset('css/_variables.scss')}}">
+    {# <link rel="stylesheet" href=" {{asset('css/block/_app-form.scss')}}"> #}
+{% endblock %}
+
+{% block header %}
+    <div class="wrapper">
+        <div class="container-fluid">
+            <header class="header">
+                <img src="{{ asset("/images/logo.svg")}}" alt="Maleteo">
+            </header>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+   
+    <h2 class="howworks__title heading2">Listado de Usuarios </h2>
+        <div>
+           
+                <table id="tabla" class="tabla" width=25%>
+                    <tr >
+                        <th class="tabla__th">Usuario</th>
+                        <th class="tabla__th">Email</th>
+                        <th class="tabla__th">Ciudad</th>
+                    </tr>
+                    {% for user in users %}
+                        <tr>                        
+                            <td class="tabla__td"><h5 class="opinion__author text-large">{{ user.name }}</h5></td>
+                            <td class="tabla__td"><p class="opinion__author-address">{{ user.email }}</p></td>
+                            <td class="tabla__td"><p class="opinion__author-address">{{ user.city }}</p>
+                        </tr>
+                    {% endfor %}
+                </table>
+            
+        </div>
+    
+{% endblock %}

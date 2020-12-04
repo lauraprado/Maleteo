@@ -1,0 +1,37 @@
+.wrapper {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.header {
+  margin: 1.5em 0;
+  @media only screen and (min-width: $breakpoint-md) {
+    margin: 3em 0;
+  }
+}
+
+.howworks {
+  margin-bottom: 5em;
+}
+
+.howworks__title {
+  margin-bottom: 1em;
+}
+
+.tabla {
+    margin-left: 150px;
+    border-collapse: collapse;
+    border-color: black;
+    table-layout: fixed;
+    width: 1000px;
+}
+
+
