@@ -2,11 +2,13 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href=" {{asset('css/_boxes.scss')}} ">
+    <link rel="stylesheet" href=" {{asset('css/newUser.css')}} ">
+    <link rel="stylesheet" href=" {{asset('css/logout.css')}} ">
+    {# <link rel="stylesheet" href=" {{asset('css/_boxes.scss')}} ">
     <link rel="stylesheet" href=" {{asset('css/_buttons.scss')}} ">
     <link rel="stylesheet" href=" {{asset('css/_grid.scss')}} ">
     <link rel="stylesheet" href=" {{asset('css/_typography.scss')}} ">
-    <link rel="stylesheet" href=" {{asset('css/_variables.scss')}}">
+    <link rel="stylesheet" href=" {{asset('css/_variables.scss')}}"> #}
     {# <link rel="stylesheet" href=" {{asset('css/block/_app-form.scss')}}"> #}
 {% endblock %}
 
@@ -20,15 +22,17 @@
     </div>
 {% endblock %}
 
-{% block body %}
-    {{form_start(formulario)}}
-    <input type="submit" value="enviar">
-    {{form_end(formulario)}}
+{% block body %} 
+    <div class="newUser">
+        <h1 class="newUserText">
+            Hasta Pronto</h1>
+            <a class="home" href="{{path('homepage')}}">Volver a la Home</a>
+    </div>
     
 {% endblock %}
 
 {% block footer %}
-    <footer class="footer">
+    <footer class="footer pos">
         <div class="wrapper">
         <div class="container-fluid">
             <img src= "{{ asset("/images/logo.svg")}}"

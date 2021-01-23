@@ -944,8 +944,10 @@
   }
 }
 
-.opinion__author {
-  margin-bottom: .3em;
+.opinion__author,
+.opinion__author-address {
+  margin: auto auto;
+  text-align: center;
 }
 
 .footer {
@@ -953,6 +955,7 @@
   background: #4b4948;
   color: white;
   text-align: center;
+  width: 100%;
 }
 
 .footer__logo {
@@ -968,6 +971,16 @@ body {
 
 a {
   color: #f09000;
+  text-decoration: none;
+}
+
+.newUser {
+  display: flex;
+}
+
+.position {
+  align-items: center;
+  justify-content: center;
 }
 /*# sourceMappingURL=styles.css.map */
 

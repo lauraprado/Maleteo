@@ -1,0 +1,23 @@
+.loginText {
+    margin-bottom: 1em;
+    text-align: center;
+    line-height: 1.2em;
+    font-size: 28.8px;
+  }
+
+.center {
+    text-align: center;
+    justify-content: center;
+    /*justify-items: center;*/
+    margin-bottom: 15px;
+}
+
+.centerButton{
+    margin-top: 55px;
+    text-align: center;
+    justify-content: center;
+}
+
+.form-control{
+    margin-right: 1.5%;
+}

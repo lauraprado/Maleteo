@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\OpinionMaleteo;
+use App\Entity\User;
 use App\Entity\UserMaleteo;
 use App\Form\DemoForm;
 use Doctrine\ORM\EntityManagerInterface;
@@ -10,6 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class MainController extends AbstractController{
 
@@ -30,6 +33,7 @@ class MainController extends AbstractController{
             $user = new UserMaleteo();
 
             $user -> setName($request->request->get('name'));
+            
             $user -> setEmail($request->request->get('email'));
             $user->setCity($request->request->get('city'));
             
@@ -37,14 +41,19 @@ class MainController extends AbstractController{
 
             $em->flush();
 
-            return new Response("Usuario registrado");
+            
+
+            //return new Response("Usuario registrado");
+            return $this->render('newUser.html.twig', ['user'=>$user]);
         }
 
+        
         return $this->render('index.html.twig',  ['opiniones'=>$random]);
     }
 
     /**
      * @Route("/user", name="user")
+     * @@IsGranted("ROLE_ADMIN")
      */
     public function users(EntityManagerInterface $em) {
         $repositorio = $em->getRepository(UserMaleteo::class);
@@ -54,7 +63,7 @@ class MainController extends AbstractController{
     }
 
     /**
-     * @Route("/random")
+     * @Route("/random", name="opiniones")
      */
     public function random (EntityManagerInterface $em) {
         $random = $em->getRepository(OpinionMaleteo::class)->findAll();
@@ -86,6 +95,27 @@ class MainController extends AbstractController{
         return $this->render('demoform.html.twig',['formulario'=> $form->createView()]);
     }
 
+    /**
+    * @Route("/adios", name="logout")
+    */
+    public function logout() {
+        return $this->render('logout.html.twig');
+    }
+
+    /**
+    * @Route("/delete/{name}", name="delete_user")
+    // * @ParamConverter("UserMaleteo", class="UserMaleteo:Post", options={"id":"name"})
+    */
+    public function deleteUser(UserMaleteo $user, EntityManagerInterface $em)
+    {
+
+        $em->remove($user);
+        $em->flush();
+
+        return new Response('Usuario eliminado');
+    }
+
     
+
 }
 

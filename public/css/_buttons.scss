@@ -11,8 +11,21 @@
   }
 }
 
+.position {
+  margin: 0 auto 50%;
+}
+
 .btn-lg {
   border-radius: 4px;
   font-size: 1.25em;
   padding: .5em 1em;
 } 
+
+.newUser {
+  display: flex;
+}
+
+.position {
+  align-items: center;
+  justify-content: center;
+}

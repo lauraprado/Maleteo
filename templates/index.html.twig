@@ -254,6 +254,14 @@
             Hecho con ❤️en Madrid
             </p>
         </div>
+        {% if is_granted('ROLE_USER') %}
+          <a href="{{path('app_logout')}}">Salir |</a>
+          <a href="{{path('user')}}"> Listar usuarios |</a>
+          <a href="{{path('opiniones')}}"> Listar opiniones</a>
+        {% else %}
+          <a href="{{path('app_login')}}">Login</a>
+        {% endif %}
+        
         </div>
     </footer>
 {% endblock %}

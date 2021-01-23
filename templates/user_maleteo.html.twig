@@ -2,12 +2,14 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href=" {{asset('css/_boxes.scss')}} ">
+    <link rel="stylesheet" href=" {{asset('css/tablas.css')}} ">
+    <link rel="stylesheet" href=" {{asset('css/newUser.css')}} ">
+    {#<link rel="stylesheet" href=" {{asset('css/_boxes.scss')}} ">
     <link rel="stylesheet" href=" {{asset('css/_buttons.scss')}} ">
     <link rel="stylesheet" href=" {{asset('css/_grid.scss')}} ">
     <link rel="stylesheet" href=" {{asset('css/_typography.scss')}} ">
     <link rel="stylesheet" href=" {{asset('css/_variables.scss')}}">
-    {# <link rel="stylesheet" href=" {{asset('css/block/_app-form.scss')}}"> #}
+     <link rel="stylesheet" href=" {{asset('css/block/_app-form.scss')}}"> #}
 {% endblock %}
 
 {% block header %}
@@ -27,19 +29,43 @@
            
                 <table id="tabla" class="tabla" width=25%>
                     <tr >
-                        <th class="tabla__th">Usuario</th>
-                        <th class="tabla__th">Email</th>
-                        <th class="tabla__th">Ciudad</th>
+                        <th class="th">Usuario</th>
+                        <th class="th">Email</th>
+                        <th class="th">Ciudad</th>
+                        <th></th>
                     </tr>
                     {% for user in users %}
                         <tr>                        
-                            <td class="tabla__td"><h5 class="opinion__author text-large">{{ user.name }}</h5></td>
-                            <td class="tabla__td"><p class="opinion__author-address">{{ user.email }}</p></td>
-                            <td class="tabla__td"><p class="opinion__author-address">{{ user.city }}</p>
+                            <td class="td"><h5 class="opinion__author text-large">{{ user.name }}</h5></td>
+                            
+                            <td class="td"><p class="opinion__author-address">{{ user.email }}</p></td>
+                            <td class="td"><p class="opinion__author-address">{{ user.city }}</p>
+                            {# <td class="td"><a href="{{path('delete_user', {'name':(user.name) })}}" >Borrar</button></td> #}
                         </tr>
                     {% endfor %}
                 </table>
             
         </div>
     
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer pos">
+        <div class="wrapper">
+        <div class="container-fluid">
+            <img src= "{{ asset("/images/logo.svg")}}"
+                alt="Maleteo"
+                class="footer__logo">
+            <p class="footer__claim">
+            Hecho con ❤️en Madrid
+            </p>
+        </div>
+        {% if is_granted('ROLE_USER') %}
+          <a href="{{path('app_logout')}}">Salir</a>
+        {% else %}
+          <a href="{{path('app_login')}}">Login</a>
+        {% endif %}
+        
+        </div>
+    </footer>
 {% endblock %}
