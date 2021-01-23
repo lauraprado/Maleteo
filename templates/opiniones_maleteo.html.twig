@@ -45,7 +45,13 @@
             Hecho con ❤️en Madrid
             </p>
         </div>
-        <a href="{{path('app_login')}}">Login</a>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{path('user')}}"> Listar usuarios |</a>
+            <a href="{{path('homepage')}}"> Home |</a>
+            <a href="{{path('app_logout')}}">Salir</a>          
+        {% else %}
+          <a href="{{path('app_login')}}">Login</a>
+        {% endif %}
         </div>
     </footer>
 {% endblock %}
